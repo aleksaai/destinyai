@@ -1,0 +1,57 @@
+/* Enhanced smooth scrolling behavior */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+/* Hide scrollbar while keeping functionality */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/* Performance optimizations */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000;
+  transform-style: preserve-3d;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  touch-action: manipulation; /* Optimize touch handling */
+}
+
+/* Smooth anchor scrolling with offset */
+[id] {
+  scroll-margin-top: 80px;
+}
+
+/* Active section highlight */
+.nav-link.active {
+  color: white;
+  opacity: 1;
+}
+
+/* Optimize animations */
+.animate-slide {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Reduce motion if user prefers */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Hardware acceleration for animations */
+.hardware-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000;
+}
